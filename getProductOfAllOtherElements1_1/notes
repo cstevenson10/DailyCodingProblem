@@ -1,0 +1,35 @@
+Problem description:
+    Given an array of integers, return a new array such that each element at index i of the new array i the product of all the numbers in the original array except the one at i. 
+
+    Corner cases:
+        zero element
+        elements close to max/min int size
+
+    Naive solution:
+        a nest for loop that takes the product of all the numbers but the ith element and places it in a new array at position i.
+        
+        Pros:
+            - Will handle zero elements according to the problem description 
+            - Will avoid unnecessary overflow (seen in solution 1)
+            - simple solution
+        Cons:
+            - Very slow O(n^2)
+
+    Solution 1:
+        multiply all the elements of the original array. Divide the product by the ith element and place it in a new array at position i
+
+        Pros:
+            - fast O(n)
+        Cons:
+            - zero element will cause division by zero 
+            - large/small elements will cause unnecessary overflow(overflow that wouldn't occur with naive solution)
+    
+    Solution 2 (precomputing results) -- book solution; no division:
+        make a prefix and suffix list of products. i.e. the prefix list's ith element is the product of all the numbers in the original list up to and including the ith element. e.g. [1,2,3,4,5] prefix_products = [1,2,6,24,120] and suffix_products = [120,120,60,20,5]
+
+        Pro:
+            - fast O(n)
+            - no division
+        Cons: 
+            - Space complexity (3 lists)
+        

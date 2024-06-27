@@ -1,0 +1,22 @@
+Problem: Given an array of integers that are out of order, determine the bounds of the smallest window that must be sorted in order for the entire array to be sorted
+e.g. given [3,7,5,6,9] return (1,3)
+
+Solution 1:
+    find the first and last elements in the array that are out of order return the indices
+    To implement: 
+    - we want the smallest index that is out of order and the highest index that is out of order   
+        - e.g. [1,3,2,5,4,7,8]
+    - to find the left index:
+        iterate through the array searching for the first unsorted 
+    - to find the right index:
+        Continue iterating through the array searching for where the first out of order element would go. 
+            However, it is possible to have another pair (or more) of unsorted elements in this case
+            we would need to figure out 
+
+            [1,3,2,5,4,7,8]
+               | |
+            [1,2,3,5,4,7,8]
+                   | |
+            [1,2,3,4,5,7,8]
+            ------
+            [1,2,10,4,5,6,3,7,8]
